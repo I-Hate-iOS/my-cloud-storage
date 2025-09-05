@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AuthScreen from "./components/AuthScreen";
+import Dashboard from "./components/Dashboard";
+import Settings from "./components/Settings";
+import AddFile from "./components/AddFile";
 
 function App() {
+  const isAuthenticated = /* logica per verificare il login */;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <AuthScreen />} />
+        <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />} />
+        <Route path="/settings" element={isAuthenticated ? <Settings /> : <Navigate to="/" />} />
+        <Route path="/add-file" element={isAuthenticated ? <AddFile /> : <Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 }
 
