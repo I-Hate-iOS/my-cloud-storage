@@ -5,7 +5,7 @@ import Settings from "./components/Settings";
 import AddFile from "./components/AddFile";
 
 function App() {
-  const isAuthenticated = /* logica per verificare il login */;
+  //const isAuthenticated = /* logica per verificare il login */;
 
   return (
     <Router>
